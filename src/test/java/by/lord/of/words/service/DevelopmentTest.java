@@ -1,5 +1,6 @@
 package by.lord.of.words.service;
 
+import by.lord.of.words.LowApplicationTests;
 import by.lord.of.words.utils.LOWUtils;
 import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-//class CounterServiceTest extends LowApplicationTests{
-class DevelopmentTest {
+
+class DevelopmentTest extends LowApplicationTests{
 
     public static Stream<String> getFileAsLines() throws IOException {
         return Files.lines(Paths.get("test.txt"), StandardCharsets.UTF_8);
