@@ -9,28 +9,41 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.persistence.EntityNotFoundException;
-
 @RestController
 @RequestMapping(value = "/documents")
 @RequiredArgsConstructor
 public class DocumentController {
 
-    private final DocumentService counterService;
+    private final DocumentService documentService;
+
+    private final static String WORDS_AMOUNT = "/{id}/words/amount";
+    private final static String WORDS_AMOUNT_UNIQUE = "/{id}/words/amount/unique";
+    private final static String WORDS = "/{id}/words";
+    private final static String WORDS_UNIQUE = "/{id}/words/unique";
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Document get(@PathVariable Long id) {
-        return counterService.getById(id);
+        return documentService.getById(id);
     }
 
-    @GetMapping(value = "/{id}/words", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = WORDS_AMOUNT, produces = MediaType.APPLICATION_JSON_VALUE)
     public long getWordsAmount(@PathVariable Long id) {
-        return counterService.getWordsAmount(id);
+        return documentService.getWordsAmount(id);
     }
 
-    @GetMapping(value = "/{id}/words/unique", produces = MediaType.APPLICATION_JSON_VALUE)
-    public long getUniqueWords(@PathVariable Long id) {
-        return counterService.getAmountUnique(id);
+    @GetMapping(value = WORDS_AMOUNT_UNIQUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public long getUniqueWordsAmount(@PathVariable Long id) {
+        return documentService.getAmountUnique(id);
+    }
+
+    @GetMapping(value = WORDS, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String[] getWords(@PathVariable Long id) {
+        return documentService.getAllWords(id);
+    }
+
+    @GetMapping(value = WORDS_UNIQUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String[] getUniqueWords(@PathVariable Long id) {
+        return documentService.getUniqueWords(id);
     }
 
 }
