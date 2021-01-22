@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @AllArgsConstructor
-public class FileController {
+public class FileRESTController {
 
     private final FileDBStorageServiceImpl fileDBService;
 

@@ -23,7 +23,7 @@
 <div>
     <ul>
         <li th:each="file : ${files}">
-            <a th:href="${file}" th:text="${file}"/>
+            <a th:href="${file.getUrl()}" th:text="${file.getName()}"/>
         </li>
     </ul>
 </div>

@@ -18,4 +18,8 @@ public class ResponseFile {
     private String type;
     private long size;
 
+    @Override
+    public String toString() {
+        return url;
+    }
 }
